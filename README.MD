@@ -29,7 +29,7 @@ It is written in English but works in any language. Claude answers in the langua
 **Claude Code**
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/concise-intuitive-answers.git
+git clone https://github.com/yavuzenharyazici-maker/concise-intuitive-answers.git
 cp -r concise-intuitive-answers/concise-intuitive-answers ~/.claude/skills/
 ```
 
