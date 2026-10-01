@@ -1,1 +1,8 @@
-
+{
+  "name": "concise-intuitive-answers",
+  "displayName": "Concise Intuitive Answers",
+  "description": "Concise, filler-free answers with intuition per step, answer format chosen by question type, and a brief mode.",
+  "version": "1.0.0",
+  "author": { "name": "Yavuz Enhar Yazıcı" },
+  "license": "MIT"
+}
