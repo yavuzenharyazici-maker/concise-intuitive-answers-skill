@@ -45,7 +45,7 @@ The skill is plain text with no scripts or network access. As with any third-par
 ## Things to know
 
 - **Confidence tags.** The skill uses `[Certain]`, `[Likely]` and `[Guessing]` on groups of claims. If you don't want them, delete the confidence-tag bullet under "Factual Accuracy".
-- **Other skills.** It defers to `llm-council` for explicit council or debate requests and to a tutoring skill for explicit "teach me" or "quiz me" requests. If you don't have those, the lines are harmless.
+- **Other skills.** It defers to `llm-council` for explicit council or debate requests. If you don't have it, the line is harmless.
 - **Skill loading is up to the model.** A skill is loaded when its description matches the request. Rules you want in every single reply (for example, "never use `$` for math") are more reliable in your account preferences or `CLAUDE.md` than in a skill.
 - **Brief mode** is inspired by the `caveman` skill. This text is written independently.
 
