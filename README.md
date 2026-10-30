@@ -20,7 +20,7 @@ It is written in English but works in any language. Claude answers in the langua
 
 **3. Factual discipline.** Names, dates, attributions and current facts are not written from memory alone. The skill includes a date-consistency check (does the person's lifetime overlap the work's date?) and a worked bad example of an unchecked attribution.
 
-**4. Brief mode.** Say "short", "tl;dr", "quick answer" or "in a nutshell" for one short answer; "very short", "just the number" or "caveman" for fragments. Say "brief mode" or "keep it short from now on" to keep every answer short until you say "normal mode". Brief answers cover only what was asked. Compression never removes numbers, units, formulas, confidence tags on uncertain claims, or safety warnings. Trigger phrases work in any language.
+**4. Brief mode.** Say "short", "tl;dr", "quick answer" or "in a nutshell" for one short answer; "very short", "just the number" or "caveman" for fragments. Say "brief mode" or "keep it short from now on" to keep every answer short until you say "normal mode". Brief answers cover only what was asked. Compression never removes numbers, units, formulas, notes on unverified claims, or safety warnings. Trigger phrases work in any language.
 
 **5. Math notation.** All math in LaTeX, inline `$...$` and display `$$...$$`, because `\( \)` and `\[ \]` show up as raw text in the Claude mobile app. Plain numbers in prose stay plain text. Since `$` is the math delimiter, prices use the currency code ("20 USD").
 
@@ -44,7 +44,7 @@ The skill is plain text with no scripts or network access. As with any third-par
 
 ## Things to know
 
-- **Confidence tags.** The skill marks claims it could not verify with `[Likely]` or `[Guessing]`, at most once per paragraph; verified claims carry a source instead. If you don't want tags, delete the tag bullets under "Facts".
+- **No confidence labels.** Versions before 1.3 tagged claims `[Certain]` / `[Likely]` / `[Guessing]`. Self-rated confidence is not a reliable signal, so the skill now verifies facts, cites sources, and says in plain words when something could not be checked.
 - **Other skills.** It defers to `llm-council` for explicit council or debate requests. If you don't have it, the line is harmless.
 - **Skill loading is up to the model.** A skill is loaded when its description matches the request. Rules you want in every single reply (for example, "never use `$` for math") are more reliable in your account preferences or `CLAUDE.md` than in a skill.
 - **Brief mode** is inspired by the `caveman` skill. This text is written independently.
