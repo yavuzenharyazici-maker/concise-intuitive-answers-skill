@@ -1,53 +1,97 @@
 # concise-intuitive-answers
 
-A Claude skill that makes answers short, filler-free, and intuitive, and picks the answer format from the question type instead of using one template for everything.
+A Claude plugin that makes answers lead with the result, cut filler but no facts, explain the intuition behind each step, check every result, judge ideas critically instead of agreeing, verify facts, and write math in a notation the interface can show.
 
-It is written in English but works in any language. Claude answers in the language you write in.
+It is written in English and works in any language: Claude answers in the language you write in, and number formats follow that language.
 
 ## What it does
 
-**1. Format by question type.** Claude classifies the question first, then applies that type's format.
+**1. Format by question type.** Claude classifies the question, then applies that type's format.
 
 | Type | Example | Format |
 |---|---|---|
-| Solution | derivative, circuit, bug | Step by step, an intuition note after each key step, units / limits / order-of-magnitude check at the end |
+| Problem | derivative, circuit, failing test, bug | Numbered steps, an intuition after each key step, a shown result check |
 | Concept | "what is entropy" | Bare idea, then formalism, then example, then common misconception |
-| Fact / history | "how does this fountain work" | Answer in the first sentence, one layer of context, names and dates verified |
-| Decision | "which e-reader" | Recommendation first, then the condition that flips it |
-| Practical | place, time, route | Direct answer, no intuition note |
+| Idea / plan / claim | "I'll validate emails with this regex" | Verdict first, reasons from several angles, the alternative and the concrete risk if the verdict is negative |
+| Fact / history | "how does this fountain work" | Answer first, one layer of context, checked facts with sources |
+| Decision | "8 GB or 16 GB RAM" | Recommendation first, then the condition that flips it |
+| Practical | command, place, time | Direct answer only |
 
-**2. No filler.** No praise of the question, no preamble, no restating the question, no closing pleasantries.
+**2. No filler, no lost detail.** No praise of the question, no preamble, no closing offers. Sentences are short; numbers, units, conditions and steps are never cut.
 
-**3. Factual discipline.** Names, dates, attributions and current facts are not written from memory alone. The skill includes a date-consistency check (does the person's lifetime overlap the work's date?) and a worked bad example of an unchecked attribution.
+**3. Intuition and analogy.** Every key step says why it is taken and what it means. An analogy is added when it maps the real mechanism, with a note on where it breaks. No forced analogies.
 
-**4. Brief mode.** Say "short", "tl;dr", "quick answer" or "in a nutshell" for one short answer; "very short", "just the number" or "caveman" for fragments. Say "brief mode" or "keep it short from now on" to keep every answer short until you say "normal mode". Brief answers cover only what was asked. Compression never removes numbers, units, formulas, notes on unverified claims, or safety warnings. Trigger phrases work in any language.
+**4. Result checks.** Units, limiting cases, order of magnitude, substituting back, a second method, or running the test. The check is shown with concrete values; a check that was not done is never claimed.
 
-**5. Math notation.** All math in LaTeX, inline `$...$` and display `$$...$$`, because `\( \)` and `\[ \]` show up as raw text in the Claude mobile app. Plain numbers in prose stay plain text. Since `$` is the math delimiter, prices use the currency code ("20 USD").
+**5. No sycophancy.** Ideas get a critical look from several angles and a clear verdict. Disagreement comes with the reason, the alternative and the risk. Sound ideas are confirmed without invented flaws. Pushback without new information does not change the answer; new information does.
+
+**6. False premises first.** A question built on a false premise gets the correction first, then an answer to the meaningful version.
+
+**7. Verified facts.** Names, dates, attributions, prices and versions are checked with search when a search tool is available, and cited. Date consistency is checked (was the person alive, did the product exist). A claim that could not be verified is flagged once, in plain words, with where to check it.
+
+**8. Math that renders.** LaTeX (`$...$`, `$$...$$`) where the interface renders it; readable Unicode (ω₀ = √(k/m)) in a plain terminal, where raw LaTeX would be noise. `\( \)` and `\[ \]` are never used, because the Claude mobile app shows them as raw text. Money uses currency codes ("20 USD"), never `$`.
+
+**9. Brief mode.** "short", "tl;dr", "just the number" (or the same in any language) for one short answer; "keep it short from now on" until "normal mode". Brevity never drops numbers, units, verdicts, unverified-claim notes or safety warnings.
+
+## What works where
+
+The plugin has two parts: a **skill** (the full rules and examples) and a **SessionStart hook** (a short core of the rules, added to every session). Each Claude surface loads a different subset of a plugin ([component support table](https://claude.com/docs/plugins/platform-support)):
+
+| Surface | Skill | Hook | Result |
+|---|---|---|---|
+| Claude Code: terminal, desktop app, web, IDE | Loads | Loads | Core rules in every session; math mode detected automatically |
+| Cowork | Loads | Loads | Core rules in every session |
+| claude.ai chat: web, desktop chat, mobile | Loads | Ignored | The skill applies only when Claude judges it relevant. For every-reply coverage, paste [`hooks/core.md`](hooks/core.md) into your personal preferences in claude.ai Settings |
+
+**Math mode in Claude Code.** The hook reads `CLAUDE_CODE_ENTRYPOINT`: the interactive terminal (`cli`) gets Unicode math; the desktop and web apps get LaTeX; any other value defaults to LaTeX. If your interface shows raw `$...$` text or renders LaTeX against that guess, set the mode yourself in `~/.claude/settings.json`:
+
+```json
+{ "env": { "CONCISE_INTUITIVE_MATH": "plain" } }
+```
+
+Use `"latex"` to force LaTeX instead.
 
 ## Install
 
 **Claude Code**
 
 ```bash
-git clone https://github.com/yavuzenharyazici-maker/concise-intuitive-answers-skill.git
-cp -r concise-intuitive-answers-skill/skills/concise-intuitive-answers ~/.claude/skills/
+/plugin install concise-intuitive-answers --marketplace yavuzenharyazici-maker/concise-intuitive-answers-skill
 ```
 
-**claude.ai**
+To try it for one session from a local clone:
 
-1. Zip the `concise-intuitive-answers` folder. The folder itself must be at the top level of the ZIP, and its name must match the skill name.
-2. Go to Settings > Capabilities > Upload skill and upload the ZIP.
+```bash
+claude --plugin-dir ./concise-intuitive-answers-skill
+```
 
-Individual users cannot share skills with each other directly in claude.ai. On Team and Enterprise plans, an organization Owner can provision a skill for everyone.
+The hook runs a Bash script. On Windows it needs Git Bash, which Claude Code uses when it is installed; without it, the hook does not run and the skill alone applies.
 
-The skill is plain text with no scripts or network access. As with any third-party skill, read it before installing.
+**claude.ai and Cowork**
+
+1. Zip the repository folder and upload it in Customize > Plugins > Add > Upload plugin.
+2. For chat, also paste [`hooks/core.md`](hooks/core.md) into your personal preferences, since chat does not run hooks.
+
+The plugin is plain text plus one short Bash script with no network access. As with any third-party plugin, read it before installing.
 
 ## Things to know
 
-- **No confidence labels.** Versions before 1.3 tagged claims `[Certain]` / `[Likely]` / `[Guessing]`. Self-rated confidence is not a reliable signal, so the skill now verifies facts, cites sources, and says in plain words when something could not be checked.
-- **Other skills.** It defers to `llm-council` for explicit council or debate requests. If you don't have it, the line is harmless.
-- **Skill loading is up to the model.** A skill is loaded when its description matches the request. Rules you want in every single reply (for example, "never use `$` for math") are more reliable in your account preferences or `CLAUDE.md` than in a skill.
-- **Brief mode** is inspired by the `caveman` skill. This text is written independently.
+- **Do not combine with other answer-style plugins.** Plugins such as `caveman` inject opposite instructions every turn (for example "no unrequested examples" against "an analogy per problem"). With both enabled, Claude gets contradictory rules. Turn the other one off.
+- **Compliance is probabilistic.** No prompt guarantees every reply. The eval suite measures how often the rules hold.
+- **Search depends on the surface.** Without a search tool (web search off in claude.ai, or no WebSearch permission in Claude Code), facts cannot be checked online, and Claude flags the claims it could not verify instead.
+- **Contested value questions.** On moral, political or religious questions where the disagreement is about values, factual errors are corrected plainly, and the strongest positions are laid out instead of a personal verdict.
+- **Coding work is out of scope.** Tool-progress lines, code, comments and commit messages keep their own conventions.
+- **No confidence labels.** Versions before 1.3 tagged claims `[Certain]` / `[Likely]` / `[Guessing]`. Self-rated confidence is not a reliable signal, so the plugin verifies facts and says plainly what it could not check.
+
+## Evals
+
+`evals/` holds 16 cases for [`claude plugin eval`](https://code.claude.com/docs/en/plugin-evals): problems in several languages, a bug, concepts, a bad idea and a good idea, pushback without new information, a false premise, a date-consistency trap, an unverifiable price, brief mode, a decision, a practical question, money notation and an analogy. Each case has a judge rubric plus free regex checks for filler and `\(` / `\[` delimiters.
+
+```bash
+claude plugin eval . --model sonnet --judge-model sonnet
+```
+
+Every run is a real model call on your account. Evals run as headless Claude Code sessions, so they measure Claude Code behavior, not claude.ai chat.
 
 ## License
 
