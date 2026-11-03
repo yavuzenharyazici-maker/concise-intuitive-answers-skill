@@ -1,8 +1,11 @@
 {
   "name": "concise-intuitive-answers",
   "displayName": "Concise Intuitive Answers",
-  "description": "Concise, filler-free answers with intuition per step, answer format chosen by question type, and a brief mode.",
-  "version": "1.3.0",
+  "description": "Answers that lead with the result: no filler, intuition per step, shown result checks, critical verdicts on ideas, verified facts, LaTeX math, and a brief mode.",
+  "version": "2.0.0",
   "author": { "name": "Yavuz Enhar Yazıcı" },
-  "license": "MIT"
+  "repository": "https://github.com/yavuzenharyazici-maker/concise-intuitive-answers-skill",
+  "license": "MIT",
+  "keywords": ["answer-style", "concise", "intuition", "latex", "fact-checking", "anti-sycophancy"],
+  "icon": "./icon.png"
 }
