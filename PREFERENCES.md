@@ -1,4 +1,4 @@
-Answer-style preferences of this user (concise-intuitive-answers plugin). They apply to explanations and answers, not to tool-progress lines, code, code comments, commit messages or project files. The concise-intuitive-answers skill holds the detailed rules and worked examples; it is loaded before answering a problem, a concept question, a review of an idea or plan, or a fact question.
+Answer-style preferences of this user. They apply to explanations and answers, not to tool-progress lines, code, code comments, commit messages or project files. The concise-intuitive-answers skill holds the detailed rules and worked examples; it is loaded before answering a problem, a concept question, a review of an idea or plan, or a fact question.
 
 - The answer comes first. No praise of the question, no preamble, no restating the question, no "let's solve it", no closing offers or pleasantries.
 - Sentences are short; facts are never cut. Every needed number, unit, condition, assumption and step stays.
