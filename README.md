@@ -35,21 +35,18 @@ It is written in English and works in any language: Claude answers in the langua
 
 ## What works where
 
-The plugin has two parts: a **skill** (the full rules and examples) and a **SessionStart hook** (a short core of the rules, added to every session). Each Claude surface loads a different subset of a plugin ([component support table](https://claude.com/docs/plugins/platform-support)):
+The plugin is one skill. A skill loads when Claude judges it relevant to the request, on every surface: claude.ai chat (web, desktop, mobile), Cowork and Claude Code. For rules that apply to every single reply, also put [`PREFERENCES.md`](PREFERENCES.md), a short core of the rules, where your surface reads it on every turn:
 
-| Surface | Skill | Hook | Result |
-|---|---|---|---|
-| Claude Code: terminal, desktop app, web, IDE | Loads | Loads | Core rules in every session; math mode detected automatically |
-| Cowork | Loads | Loads | Core rules in every session |
-| claude.ai chat: web, desktop chat, mobile | Loads | Ignored | The skill applies only when Claude judges it relevant. For every-reply coverage, paste [`hooks/core.md`](hooks/core.md) into your personal preferences in claude.ai Settings |
+| Surface | Where to put `PREFERENCES.md` |
+|---|---|
+| claude.ai chat, Cowork | Your personal preferences in claude.ai Settings |
+| Claude Code | Your user `CLAUDE.md` (`~/.claude/CLAUDE.md`), which loads in every session |
 
-**Math mode in Claude Code.** The hook reads `CLAUDE_CODE_ENTRYPOINT`: the interactive terminal (`cli`) gets Unicode math; the desktop and web apps get LaTeX; any other value defaults to LaTeX. If your interface shows raw `$...$` text or renders LaTeX against that guess, set the mode yourself in `~/.claude/settings.json`:
+**Math in a plain terminal.** The Claude Code terminal does not render LaTeX; the desktop and web apps do. The skill assumes LaTeX unless told otherwise. If you use Claude Code in a terminal, add this line to `~/.claude/CLAUDE.md`:
 
-```json
-{ "env": { "CONCISE_INTUITIVE_MATH": "plain" } }
+```text
+This interface is a plain terminal that does not render LaTeX.
 ```
-
-Use `"latex"` to force LaTeX instead.
 
 ## Install
 
@@ -65,14 +62,12 @@ To try it for one session from a local clone:
 claude --plugin-dir ./concise-intuitive-answers-skill
 ```
 
-The hook runs a Bash script. On Windows it needs Git Bash, which Claude Code uses when it is installed; without it, the hook does not run and the skill alone applies.
-
 **claude.ai and Cowork**
 
-1. Zip the repository folder and upload it in Customize > Plugins > Add > Upload plugin.
-2. For chat, also paste [`hooks/core.md`](hooks/core.md) into your personal preferences, since chat does not run hooks.
+1. Install it from the directory, or zip the repository folder and upload it in Customize > Plugins > Add > Upload plugin.
+2. Paste [`PREFERENCES.md`](PREFERENCES.md) into your personal preferences for every-reply coverage.
 
-The plugin is plain text plus one short Bash script with no network access. As with any third-party plugin, read it before installing.
+The plugin is plain text with no scripts and no network access. As with any third-party plugin, read it before installing.
 
 ## Things to know
 
