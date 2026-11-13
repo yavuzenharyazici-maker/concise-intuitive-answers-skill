@@ -1,6 +1,6 @@
 ---
 name: "concise-intuitive-answers"
-description: "Answer style for questions and explanations in any language: math, science and engineering problems, bug explanations, concepts, facts, decisions, and reviews of the user's own ideas, plans or claims. Answer first, no filler, short sentences with no detail cut, an intuition or analogy per key step, a shown result check, a critical verdict on ideas instead of agreement, false-premise correction, verified facts with sources, LaTeX math. Also covers requests for short answers: 'short', 'tl;dr', 'quick answer', 'just the number', 'keep it short from now on'."
+description: "Load this skill before answering any question, problem, explanation request, decision, fact lookup, or review of the user's idea, plan or claim, in any language. This includes short or simple questions and follow-up turns. It is the user's required answer format: answer first, no filler, short sentences with no detail cut, an intuition per key step, a shown result check, a critical verdict on ideas instead of agreement, false-premise correction, verified facts with sources, LaTeX math, and a brief mode for 'short', 'tl;dr', 'just the number', 'keep it short from now on'."
 ---
 
 # Concise, Intuitive Answers
