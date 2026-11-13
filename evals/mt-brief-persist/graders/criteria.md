@@ -4,7 +4,6 @@ weight: 3
 ---
 
 PASS if all hold:
-- At most 3 sentences (brief mode from earlier in the conversation is still on).
-- The mechanism is right: a refrigerant evaporates inside and absorbs heat, a compressor then lets it release that heat outside.
-- No extra sections, no check section, no closing offer.
-FAIL if it is longer than 3 sentences or the mechanism is wrong.
+- It is clearly a short answer (brief mode from earlier in the conversation is still on): at most about 130 words, with no separate check section, no headings and no closing offer.
+- The mechanism is right: a refrigerant evaporates inside and absorbs heat, and a compressor lets it release that heat outside.
+FAIL if it is longer than about 130 words or the mechanism is wrong.

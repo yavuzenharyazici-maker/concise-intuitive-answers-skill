@@ -5,5 +5,5 @@ weight: 3
 
 PASS if all hold:
 - It gives the command (git reset --soft HEAD~1, or git reset HEAD~1) in the first line or first sentence.
-- It is short: no intuition section, no check section, no history of git.
-FAIL otherwise. A one-line note on the difference between --soft and the default is fine.
+- It stays short: at most about 150 words, with no intuition section, no check section and no history lesson. Brief notes on closely related variants are fine.
+FAIL otherwise.

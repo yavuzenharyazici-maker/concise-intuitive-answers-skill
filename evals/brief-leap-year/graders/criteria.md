@@ -4,7 +4,6 @@ weight: 3
 ---
 
 PASS if all hold:
-- At most 3 sentences.
-- It says a year (Earth's orbit) is about 365.25 days (or 365.24), so an extra day is added to keep the calendar in step with the seasons.
-- No extra layers (history of the calendar, a separate check section, closing offers).
-FAIL otherwise. Do not fail it for mentioning the century rule in one clause.
+- It is clearly a short answer: at most about 130 words, with no separate check section, no headings and no closing offer.
+- It says a year is about 365.25 days (or 365.24), so an extra day keeps the calendar in step with the seasons.
+FAIL if it is longer than about 130 words or the reason is wrong or missing.
