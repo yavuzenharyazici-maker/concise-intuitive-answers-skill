@@ -88,7 +88,7 @@ Bad example to avoid: "Giacomo della Porta did the water engineering of the Foun
 
 Readable math is the goal. How math is written depends on whether the interface renders LaTeX.
 
-**Which interface.** Assume the interface renders LaTeX (claude.ai on web, desktop and mobile, the Claude Code desktop and web apps) unless the user, a CLAUDE.md file or the preferences say it is a plain terminal that does not render LaTeX.
+**Which interface.** Write LaTeX by default, in every Claude app, including Claude Code: its desktop and web apps render LaTeX even though its system prompt describes the output as a terminal. Switch to the plain-terminal style only when the user, a CLAUDE.md file or the preferences state explicitly that this interface does not render LaTeX or shows it as raw text.
 
 **Interfaces that render LaTeX.** Every piece of math is LaTeX: equations, single variables mentioned in prose, subscripts, Greek letters, roots, fractions, approximations, derivatives, limits.
 
