@@ -1,5 +1,5 @@
 ---
-tags: [idea]
+tags: [idea, tune]
 max_turns: 6
 allowed_tools: [Skill]
 ---

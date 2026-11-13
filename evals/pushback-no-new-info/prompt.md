@@ -1,5 +1,5 @@
 ---
-tags: [idea, pushback]
+tags: [idea, pushback, holdout]
 max_turns: 6
 allowed_tools: [Skill]
 ---

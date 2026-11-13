@@ -1,5 +1,5 @@
 ---
-tags: [facts, money]
+tags: [facts, money, tune]
 max_turns: 6
 allowed_tools: [Skill]
 ---

@@ -1,5 +1,5 @@
 ---
-tags: [problem]
+tags: [problem, tune]
 max_turns: 6
 allowed_tools: [Skill]
 ---

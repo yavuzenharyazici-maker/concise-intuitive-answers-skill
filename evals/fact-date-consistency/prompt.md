@@ -1,5 +1,5 @@
 ---
-tags: [facts]
+tags: [facts, holdout]
 max_turns: 6
 allowed_tools: [Skill]
 ---

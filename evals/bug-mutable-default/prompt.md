@@ -1,5 +1,5 @@
 ---
-tags: [problem, code]
+tags: [problem, code, holdout]
 max_turns: 6
 allowed_tools: [Skill]
 ---
