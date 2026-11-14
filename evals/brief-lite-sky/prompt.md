@@ -1,5 +1,5 @@
 ---
-tags: [brief]
+tags: [brief, tune]
 max_turns: 6
 allowed_tools: [Skill]
 ---

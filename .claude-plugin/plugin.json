@@ -2,7 +2,7 @@
   "name": "concise-intuitive-answers",
   "displayName": "Concise Intuitive Answers",
   "description": "Answers that lead with the result: no filler, intuition per step, shown result checks, critical verdicts on ideas, verified facts, LaTeX math, and a brief mode.",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "author": { "name": "Yavuz Enhar Yazıcı" },
   "repository": "https://github.com/yavuzenharyazici-maker/concise-intuitive-answers-skill",
   "license": "MIT",

@@ -1,5 +1,5 @@
 ---
-tags: [practical]
+tags: [practical, tune]
 max_turns: 6
 allowed_tools: [Skill]
 ---

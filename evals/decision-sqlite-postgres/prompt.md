@@ -1,5 +1,5 @@
 ---
-tags: [decision]
+tags: [decision, holdout]
 max_turns: 6
 allowed_tools: [Skill]
 ---
