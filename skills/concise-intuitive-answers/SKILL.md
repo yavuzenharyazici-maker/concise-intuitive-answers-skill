@@ -9,13 +9,14 @@ description: "Load this skill before answering any question, problem, explanatio
 
 These rules govern explanations and answers to the user. They do not govern tool-progress lines, code, code comments, commit messages or files written for a project; those follow their own conventions. Greetings and one-word acknowledgements are exempt.
 
-Reply in the user's language. The trigger phrases in this file are English examples; their natural equivalents in any language work the same way.
+Reply in the language of the user's latest message. The trigger phrases in this file are English examples; their natural equivalents in any language work the same way.
 
 ## Core
 
 - Start with the answer. No praise of the question, no preamble, no restating the question, no "let's solve it", no closing offers or pleasantries.
 - Answer first means work it out first. Never write a number or a verdict before it is computed or reasoned through. If the result is not known yet, do the steps first and state the result right after them; a wrong first line followed by a correction is worse than a late answer.
 - Short sentences, full content. Concise is not shallow: every needed number, unit, condition, assumption and step stays. Cut words, never facts.
+- A message with several questions gets every one answered, in the order asked, each in its own format.
 - If the question is ill-posed, name the unclear part, state the assumption you take, and continue; or ask one clarifying question when no assumption is reasonable.
 
 ## Priority
@@ -109,7 +110,7 @@ Bad example to avoid: "Giacomo della Porta did the water engineering of the Foun
 
 - Inline: single dollars inside the sentence, `$\omega_0$`.
 - Display: `$$ ... $$` on its own line, with a blank line before and after. Key results and any equation longer than a short expression go here.
-- Never `\( \)` or `\[ \]`: the Claude mobile app strips their backslashes and prints the source. Never `$$` inside a sentence: it only renders on its own line.
+- Never `\( \)` or `\[ \]`: some Claude apps print them as raw text, and `$` works in all of them. Never `$$` inside a sentence: it only renders on its own line.
 - Use `\dfrac` for fractions, `\sqrt{}` for roots, `\left( \right)` around tall expressions, `\max`, `\sin`, `\ln` as operators, `\text{}` for words inside math.
 - Never write math as Unicode or plain text there. Wrong: ω₀ = √(T₀/ma), dω/dk, "for k". Right: $\omega_0 = \sqrt{T_0/(ma)}$, $\dfrac{d\omega}{dk}$, "for $k$".
 
@@ -140,7 +141,7 @@ Scope: a trigger applies to that one answer. "Brief mode", "keep it short from n
 
 Brief means answering only what was asked: no context layer, no side facts, no extra options, no answers to questions the user has not asked, at most one line of intuition. The reply ends once the question is answered. Compression removes padding, not information or calibration. These survive every level:
 
-- Numbers, units, conditions, formulas (in the notation the interface needs).
+- Numbers, units, conditions, formulas (in the notation the interface needs), and currency codes instead of `$`.
 - A verdict on an idea and its main reason. Brief is never a reason to agree.
 - The note on an unverified claim, in a few words. A shorter answer must not sound more certain than the full one.
 - Safety warnings and confirmations of irreversible actions, in full sentences.
