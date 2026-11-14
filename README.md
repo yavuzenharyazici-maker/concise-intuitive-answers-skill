@@ -36,7 +36,7 @@ The second answer shows a check you can follow, writes the formula as LaTeX that
 
 ## Measured, not claimed
 
-The repository ships its test suite (`evals/`, 42 cases). Each case has a rubric for what a good answer contains. Results on Claude Sonnet, 3 runs per case:
+The repository ships its test suite (`evals/` and `evals-multi-turn/`, 42 cases). Each case has a rubric for what a good answer contains. Results on Claude Sonnet, 3 runs per case:
 
 | | Rubric passes |
 |---|---|
@@ -121,7 +121,7 @@ The plugin is plain text with no scripts and no network access. As with any thir
 claude plugin eval . --model sonnet --judge-model sonnet
 ```
 
-Every run is a real model call on your account. See the [`claude plugin eval` documentation](https://code.claude.com/docs/en/plugin-evals). Cases are tagged `tune` (used while editing the skill) or `holdout` (kept for measurement).
+This runs the 35 single-turn cases. The 7 multi-turn cases live in [`evals-multi-turn/`](evals-multi-turn/README.md) and need one extra step. Every run is a real model call on your account. See the [`claude plugin eval` documentation](https://code.claude.com/docs/en/plugin-evals). Cases are tagged `tune` (used while editing the skill) or `holdout` (kept for measurement).
 
 ## Changes
 

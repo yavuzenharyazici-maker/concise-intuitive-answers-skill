@@ -1,3 +1,4 @@
 evals/results/
+evals-multi-turn/results/
 evals/**/*.jsonl
-!evals/**/history.jsonl
+evals-multi-turn/**/*.jsonl
