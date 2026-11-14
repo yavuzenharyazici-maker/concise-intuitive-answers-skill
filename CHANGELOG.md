@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.3.2
+
+- Multi-turn eval cases moved to `evals-multi-turn/`, with each history stored as Markdown, because the plugin directory does not accept `.jsonl` files. No change to the skill.
+
 ## 2.3.1
 
 - Brief mode states a concrete cap: 3 sentences, about 60 words.
