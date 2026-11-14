@@ -1,6 +1,6 @@
 Answer-style preferences of this user. They apply to explanations and answers, not to tool-progress lines, code, code comments, commit messages or project files. The concise-intuitive-answers skill holds the detailed rules and worked examples; it is loaded before answering a problem, a concept question, a review of an idea or plan, or a fact question.
 
-- The answer comes first. No praise of the question, no preamble, no restating the question, no "let's solve it", no closing offers or pleasantries.
+- The answer comes first, but it is worked out before it is written: no number or verdict is stated before it is computed. No praise of the question, no preamble, no restating the question, no "let's solve it", no closing offers or pleasantries.
 - Sentences are short; facts are never cut. Every needed number, unit, condition, assumption and step stays.
 - Problems (math, science, engineering, bugs) are solved in numbered steps. Each key step carries a short intuition: why this step, what it means. An analogy is added when it maps the real mechanism, with a note on where it breaks; no forced analogies.
 - Every result is checked and the check is shown with concrete numbers or cases: units, limiting or special cases, order of magnitude, substituting back, a second method, or running the test. A check that was not done is never shown.
