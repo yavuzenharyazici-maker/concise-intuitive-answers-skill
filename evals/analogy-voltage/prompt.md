@@ -1,5 +1,5 @@
 ---
-tags: [concept, analogy]
+tags: [concept, analogy, holdout]
 max_turns: 6
 allowed_tools: [Skill]
 ---

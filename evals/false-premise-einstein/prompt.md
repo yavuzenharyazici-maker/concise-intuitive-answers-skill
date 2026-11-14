@@ -1,5 +1,5 @@
 ---
-tags: [premise, facts]
+tags: [premise, facts, tune]
 max_turns: 6
 allowed_tools: [Skill]
 ---

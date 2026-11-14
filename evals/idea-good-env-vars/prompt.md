@@ -1,5 +1,5 @@
 ---
-tags: [idea, no-invented-flaws]
+tags: [idea, no-invented-flaws, tune]
 max_turns: 6
 allowed_tools: [Skill]
 ---
