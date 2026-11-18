@@ -5,10 +5,6 @@ These seven cases continue an earlier conversation. `claude plugin eval` reads t
 To run them:
 
 1. In each case folder, save the code block from `history.md` as `history.jsonl`.
-2. From the repository root, run:
-
-```bash
-claude plugin eval . --eval-dir evals-multi-turn --model sonnet --judge-model sonnet
-```
+2. From the repository root, use the `claude plugin eval` command with its eval directory option set to `evals-multi-turn`, and Sonnet as both the model and the judge.
 
 `history.jsonl` files are ignored by git.

@@ -117,11 +117,7 @@ The plugin is plain text with no scripts and no network access. As with any thir
 
 ## Run the evals yourself
 
-```bash
-claude plugin eval . --model sonnet --judge-model sonnet
-```
-
-This runs the 35 single-turn cases. The 7 multi-turn cases live in [`evals-multi-turn/`](evals-multi-turn/README.md) and need one extra step. Every run is a real model call on your account. See the [`claude plugin eval` documentation](https://code.claude.com/docs/en/plugin-evals). Cases are tagged `tune` (used while editing the skill) or `holdout` (kept for measurement).
+The eval cases are test data only; nothing in this repository runs them. To run them, use the `claude plugin eval` command from the repository root, with Sonnet as both the model and the judge. That covers the 35 single-turn cases. The 7 multi-turn cases live in [`evals-multi-turn/`](evals-multi-turn/README.md) and need one extra step. Every run is a real model call on your account. See the [`claude plugin eval` documentation](https://code.claude.com/docs/en/plugin-evals). Cases are tagged `tune` (used while editing the skill) or `holdout` (kept for measurement).
 
 ## Changes
 
