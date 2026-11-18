@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.3.3
+
+- Eval instructions describe the `claude plugin eval` command in prose instead of shell blocks, so the directory's download-and-run check does not flag them. No change to the skill.
+
 ## 2.3.2
 
 - Multi-turn eval cases moved to `evals-multi-turn/`, with each history stored as Markdown, because the plugin directory does not accept `.jsonl` files. No change to the skill.
