@@ -1,6 +1,6 @@
 # concise-intuitive-answers
 
-**Answers you can check: the result first, the reasoning in steps, a shown check, and an honest verdict on your ideas.**
+**Answers you can check: problems worked in steps up to the result, a shown check, direct answers to facts and decisions, and an honest verdict on your ideas.**
 
 A Claude plugin for people who use Claude to understand things and to test their own thinking: working through a problem set, learning a new field, reviewing their own code, proof or plan. It is for you if a correct final number is not enough, and you want to see why it is correct and be told when you are wrong.
 
@@ -36,7 +36,7 @@ The second answer shows a check you can follow, writes the formula as LaTeX that
 
 ## Measured, not claimed
 
-The repository ships its test suite (`evals/` and `evals-multi-turn/`, 42 cases). Each case has a rubric for what a good answer contains. Results on Claude Sonnet, 3 runs per case:
+The repository ships its test suite (`evals/` and `evals-multi-turn/`, 43 cases). Each case has a rubric for what a good answer contains. Results on Claude Sonnet, 3 runs per case:
 
 | | Rubric passes |
 |---|---|
@@ -63,7 +63,7 @@ Read these numbers with their limits:
 
 | You ask | You get |
 |---|---|
-| A problem: math, physics, a bug | Numbered steps, a short intuition at each key step, and a check shown with real values: units, a limiting case, substituting back, or a test |
+| A problem: math, physics, a bug | No result at the top: numbered steps, a short intuition at each key step, the result after the last step, and a check shown with real values: units, a limiting case, substituting back, or a test |
 | A concept | The bare idea in plain words, then the formalism, an example, and the common misconception |
 | Your own idea, plan or claim | A verdict first. If it is wrong: the reason, what to do instead, and the concrete risk. If it is right: a plain yes, plus details that make it work better. No invented flaws |
 | A question with a false premise | The correction first, then an answer to the question that makes sense |
@@ -117,7 +117,7 @@ The plugin is plain text with no scripts and no network access. As with any thir
 
 ## Run the evals yourself
 
-The eval cases are test data only; nothing in this repository runs them. To run them, use the `claude plugin eval` command from the repository root, with Sonnet as both the model and the judge. That covers the 35 single-turn cases. The 7 multi-turn cases live in [`evals-multi-turn/`](evals-multi-turn/README.md) and need one extra step. Every run is a real model call on your account. See the [`claude plugin eval` documentation](https://code.claude.com/docs/en/plugin-evals). Cases are tagged `tune` (used while editing the skill) or `holdout` (kept for measurement).
+The eval cases are test data only; nothing in this repository runs them. To run them, use the `claude plugin eval` command from the repository root, with Sonnet as both the model and the judge. That covers the 36 single-turn cases. The 7 multi-turn cases live in [`evals-multi-turn/`](evals-multi-turn/README.md) and need one extra step. Every run is a real model call on your account. See the [`claude plugin eval` documentation](https://code.claude.com/docs/en/plugin-evals). Cases are tagged `tune` (used while editing the skill) or `holdout` (kept for measurement).
 
 ## Changes
 
