@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.4.0
+
+- Problems no longer open with the result. The setup or key idea comes first, then the numbered steps, then the result after the last step, then the check. Facts, decisions, verdicts and practical answers still answer first.
+- `PREFERENCES.md` carries the same split, so preferences and skill no longer pull in opposite directions.
+- New eval `problem-result-last`. Eval suite: 43 cases.
+- Diagnosis behind the change (Opus, 3 problems × 2 runs per setup): result at the top in 4/6 answers with no instructions, 5/6 with the preferences only, 6/6 with the skill only or both; 0/6 with this change, while a decision question still opened with the recommendation.
+
 ## 2.3.3
 
 - Eval instructions describe the `claude plugin eval` command in prose instead of shell blocks, so the directory's download-and-run check does not flag them. No change to the skill.
